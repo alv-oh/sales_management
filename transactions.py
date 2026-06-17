@@ -1,41 +1,43 @@
 """
- Product Management Module
+Customer Management Module
 -------------------------------------
-Handles CRUD (Create, Read, Update, Delete) operations for products.
+Handles management of customer records: adding, viewing, updating,
+and removing customer profiles.
 
-Each product is stored as a dictionary with the keys:
-    id, name, price, stock_quantity
+Each customer is stored as a dictionary with the keys:
+    id, name, contact_info
 
 NOTE ON FILE INTEGRATION (Person 1):
 This module assumes Person 1 is responsible for the actual reading/writing
-of the shared data file (e.g. products.json or products.csv). Below,
-`load_products()` and `save_products()` are placeholder wrappers around
+of the shared data file (e.g. customers.json or customers.csv). Below,
+`load_customers()` and `save_customers()` are placeholder wrappers around
 simple JSON file I/O. If Person 1 already has functions for this
 (e.g. in a file_handler.py module), simply replace the bodies of
-`load_products()` and `save_products()` with calls to their functions,
+`load_customers()` and `save_customers()` with calls to their functions,
 for example:
 
     from file_handler import load_data, save_data
-    def load_products():
+    def load_customers():
         return load_data()
-    def save_products(products):
-        save_data(products)
+    def save_customers(customers):
+        save_data(customers)
 
-This keeps Person 2's CRUD logic completely separate from how the
-file is actually stored, so the two modules can be merged easily.
+This keeps the CRUD logic completely separate from how the file is
+actually stored, so the modules from different people can be merged
+easily later.
 """
 
 import json
 import os
 
-DATA_FILE = "products.json"
+DATA_FILE = "customers.json"
 
 
 # ---------------------------------------------------------------------
 # File handling helpers (replace with Person 1's functions if available)
 # ---------------------------------------------------------------------
-def load_products():
-    """Load the list of products from the data file."""
+def load_customers():
+    """Load the list of customers from the data file."""
     if not os.path.exists(DATA_FILE):
         return []
     try:
@@ -45,103 +47,99 @@ def load_products():
         return []
 
 
-def save_products(products):
-    """Save the list of products back to the data file."""
+def save_customers(customers):
+    """Save the list of customers back to the data file."""
     with open(DATA_FILE, "w") as f:
-        json.dump(products, f, indent=4)
+        json.dump(customers, f, indent=4)
 
 
 # ---------------------------------------------------------------------
 # CREATE
 # ---------------------------------------------------------------------
-def add_product(product_id, name, price, stock_quantity):
-    """Add a new product. Returns True on success, False if ID already exists."""
-    products = load_products()
+def add_customer(customer_id, name, contact_info):
+    """Add a new customer. Returns True on success, False if ID already exists."""
+    customers = load_customers()
 
-    for product in products:
-        if product["id"] == product_id:
-            print(f"Error: Product with ID {product_id} already exists.")
+    for customer in customers:
+        if customer["id"] == customer_id:
+            print(f"Error: Customer with ID {customer_id} already exists.")
             return False
 
-    new_product = {
-        "id": product_id,
+    new_customer = {
+        "id": customer_id,
         "name": name,
-        "price": float(price),
-        "stock_quantity": int(stock_quantity),
+        "contact_info": contact_info,
     }
-    products.append(new_product)
-    save_products(products)
-    print(f"Product '{name}' added successfully.")
+    customers.append(new_customer)
+    save_customers(customers)
+    print(f"Customer '{name}' added successfully.")
     return True
 
 
 # ---------------------------------------------------------------------
 # READ
 # ---------------------------------------------------------------------
-def view_all_products():
-    """Display all products in a readable table format."""
-    products = load_products()
+def view_all_customers():
+    """Display all customers in a readable table format."""
+    customers = load_customers()
 
-    if not products:
-        print("No products found.")
+    if not customers:
+        print("No customers found.")
         return
 
-    print(f"{'ID':<6}{'Name':<20}{'Price':<10}{'Stock':<10}")
-    print("-" * 46)
-    for product in products:
+    print(f"{'ID':<6}{'Name':<20}{'Contact Info':<25}")
+    print("-" * 51)
+    for customer in customers:
         print(
-            f"{product['id']:<6}{product['name']:<20}"
-            f"{product['price']:<10.2f}{product['stock_quantity']:<10}"
+            f"{customer['id']:<6}{customer['name']:<20}{customer['contact_info']:<25}"
         )
 
 
-def find_product(product_id):
-    """Return a single product dict by ID, or None if not found."""
-    products = load_products()
-    for product in products:
-        if product["id"] == product_id:
-            return product
+def find_customer(customer_id):
+    """Return a single customer dict by ID, or None if not found."""
+    customers = load_customers()
+    for customer in customers:
+        if customer["id"] == customer_id:
+            return customer
     return None
 
 
 # ---------------------------------------------------------------------
 # UPDATE
 # ---------------------------------------------------------------------
-def update_product(product_id, name=None, price=None, stock_quantity=None):
-    """Update one or more fields of an existing product. Returns True/False."""
-    products = load_products()
+def update_customer(customer_id, name=None, contact_info=None):
+    """Update one or more fields of an existing customer. Returns True/False."""
+    customers = load_customers()
 
-    for product in products:
-        if product["id"] == product_id:
+    for customer in customers:
+        if customer["id"] == customer_id:
             if name is not None:
-                product["name"] = name
-            if price is not None:
-                product["price"] = float(price)
-            if stock_quantity is not None:
-                product["stock_quantity"] = int(stock_quantity)
+                customer["name"] = name
+            if contact_info is not None:
+                customer["contact_info"] = contact_info
 
-            save_products(products)
-            print(f"Product ID {product_id} updated successfully.")
+            save_customers(customers)
+            print(f"Customer ID {customer_id} updated successfully.")
             return True
 
-    print(f"Error: Product with ID {product_id} not found.")
+    print(f"Error: Customer with ID {customer_id} not found.")
     return False
 
 
 # ---------------------------------------------------------------------
 # DELETE
 # ---------------------------------------------------------------------
-def delete_product(product_id):
-    """Delete a product by ID. Returns True if deleted, False if not found."""
-    products = load_products()
-    updated_products = [p for p in products if p["id"] != product_id]
+def delete_customer(customer_id):
+    """Remove a customer by ID. Returns True if deleted, False if not found."""
+    customers = load_customers()
+    updated_customers = [c for c in customers if c["id"] != customer_id]
 
-    if len(updated_products) == len(products):
-        print(f"Error: Product with ID {product_id} not found.")
+    if len(updated_customers) == len(customers):
+        print(f"Error: Customer with ID {customer_id} not found.")
         return False
 
-    save_products(updated_products)
-    print(f"Product ID {product_id} deleted successfully.")
+    save_customers(updated_customers)
+    print(f"Customer ID {customer_id} removed successfully.")
     return True
 
 
@@ -150,38 +148,36 @@ def delete_product(product_id):
 # ---------------------------------------------------------------------
 def main():
     while True:
-        print("\n--- Product Management Menu ---")
-        print("1. Add Product")
-        print("2. View All Products")
-        print("3. Update Product")
-        print("4. Delete Product")
+        print("\n--- Customer Management Menu ---")
+        print("1. Add Customer")
+        print("2. View All Customers")
+        print("3. Update Customer")
+        print("4. Remove Customer")
         print("5. Exit")
 
         choice = input("Enter choice: ")
 
         if choice == "1":
-            pid = input("Product ID: ")
+            cid = input("Customer ID: ")
             name = input("Name: ")
-            price = input("Price: ")
-            stock = input("Stock Quantity: ")
-            add_product(pid, name, price, stock)
+            contact = input("Contact Info: ")
+            add_customer(cid, name, contact)
 
         elif choice == "2":
-            view_all_products()
+            view_all_customers()
 
         elif choice == "3":
-            pid = input("Product ID to update: ")
+            cid = input("Customer ID to update: ")
             name = input("New name (leave blank to skip): ") or None
-            price = input("New price (leave blank to skip): ") or None
-            stock = input("New stock quantity (leave blank to skip): ") or None
-            update_product(pid, name, price, stock)
+            contact = input("New contact info (leave blank to skip): ") or None
+            update_customer(cid, name, contact)
 
         elif choice == "4":
-            pid = input("Product ID to delete: ")
-            delete_product(pid)
+            cid = input("Customer ID to remove: ")
+            delete_customer(cid)
 
         elif choice == "5":
-            print("Exiting Product Management Module.")
+            print("Exiting Customer Management Module.")
             break
 
         else:
