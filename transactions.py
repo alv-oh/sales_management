@@ -7,20 +7,6 @@ and removing customer profiles.
 Each customer is stored as a dictionary with the keys:
     id, name, contact_info
 
-NOTE ON FILE INTEGRATION (Person 1):
-This module assumes Person 1 is responsible for the actual reading/writing
-of the shared data file (e.g. customers.json or customers.csv). Below,
-`load_customers()` and `save_customers()` are placeholder wrappers around
-simple JSON file I/O. If Person 1 already has functions for this
-(e.g. in a file_handler.py module), simply replace the bodies of
-`load_customers()` and `save_customers()` with calls to their functions,
-for example:
-
-    from file_handler import load_data, save_data
-    def load_customers():
-        return load_data()
-    def save_customers(customers):
-        save_data(customers)
 
 This keeps the CRUD logic completely separate from how the file is
 actually stored, so the modules from different people can be merged
@@ -34,7 +20,8 @@ DATA_FILE = "customers.json"
 
 
 # ---------------------------------------------------------------------
-# File handling helpers (replace with Person 1's functions if available)
+# File handling helpers 
+
 # ---------------------------------------------------------------------
 def load_customers():
     """Load the list of customers from the data file."""
