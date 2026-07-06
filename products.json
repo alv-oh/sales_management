@@ -1,177 +1,177 @@
 [
-	{
-		"id": "P001",
-		"name": "Wireless Mouse",
-		"price": 19.99,
-		"stock_quantity": 45,
-		"category": "Electronics"
-	},
-	{
-		"id": "P002",
-		"name": "Mechanical Keyboard",
-		"price": 69.5,
-		"stock_quantity": 22,
-		"category": "Electronics"
-	},
-	{
-		"id": "P003",
-		"name": "27in Monitor",
-		"price": 229.0,
-		"stock_quantity": 14,
-		"category": "Electronics"
-	},
-	{
-		"id": "P004",
-		"name": "USB-C Cable",
-		"price": 8.75,
-		"stock_quantity": 120,
-		"category": "Accessories"
-	},
-	{
-		"id": "P005",
-		"name": "Laptop Stand",
-		"price": 32.0,
-		"stock_quantity": 35,
-		"category": "Accessories"
-	},
-	{
-		"id": "P006",
-		"name": "Notebook A5",
-		"price": 4.5,
-		"stock_quantity": 200,
-		"category": "Stationery"
-	},
-	{
-		"id": "P007",
-		"name": "Gel Pen Set",
-		"price": 6.99,
-		"stock_quantity": 90,
-		"category": "Stationery"
-	},
-	{
-		"id": "P008",
-		"name": "Desk Organizer",
-		"price": 14.25,
-		"stock_quantity": 40,
-		"category": "Office"
-	},
-	{
-		"id": "P009",
-		"name": "Stapler Pro",
-		"price": 11.8,
-		"stock_quantity": 30,
-		"category": "Office"
-	},
-	{
-		"id": "P010",
-		"name": "Printer Paper 500",
-		"price": 7.2,
-		"stock_quantity": 160,
-		"category": "Office"
-	},
-	{
-		"id": "P011",
-		"name": "Water Bottle 1L",
-		"price": 12.5,
-		"stock_quantity": 55,
-		"category": "Lifestyle"
-	},
-	{
-		"id": "P012",
-		"name": "Coffee Mug",
-		"price": 9.99,
-		"stock_quantity": 70,
-		"category": "Lifestyle"
-	},
-	{
-		"id": "P013",
-		"name": "Backpack 20L",
-		"price": 39.95,
-		"stock_quantity": 26,
-		"category": "Bags"
-	},
-	{
-		"id": "P014",
-		"name": "Laptop Sleeve 15",
-		"price": 18.4,
-		"stock_quantity": 48,
-		"category": "Bags"
-	},
-	{
-		"id": "P015",
-		"name": "Smartphone Stand",
-		"price": 10.0,
-		"stock_quantity": 65,
-		"category": "Accessories"
-	},
-	{
-		"id": "P016",
-		"name": "HDMI Adapter",
-		"price": 15.3,
-		"stock_quantity": 38,
-		"category": "Electronics"
-	},
-	{
-		"id": "P017",
-		"name": "Portable SSD 1TB",
-		"price": 119.0,
-		"stock_quantity": 18,
-		"category": "Electronics"
-	},
-	{
-		"id": "P018",
-		"name": "Webcam 1080p",
-		"price": 54.75,
-		"stock_quantity": 24,
-		"category": "Electronics"
-	},
-	{
-		"id": "P019",
-		"name": "Desk Lamp LED",
-		"price": 26.6,
-		"stock_quantity": 29,
-		"category": "Office"
-	},
-	{
-		"id": "P020",
-		"name": "Noise Cancel Headset",
-		"price": 89.99,
-		"stock_quantity": 16,
-		"category": "Electronics"
-	},
-	{
-		"id": "P021",
-		"name": "Whiteboard Markers",
-		"price": 5.4,
-		"stock_quantity": 110,
-		"category": "Stationery"
-	},
-	{
-		"id": "P022",
-		"name": "Planner 2026",
-		"price": 13.2,
-		"stock_quantity": 50,
-		"category": "Stationery"
-	},
-	{
-		"id": "P023",
-		"name": "Sticky Notes Pack",
-		"price": 3.95,
-		"stock_quantity": 180,
-		"category": "Stationery"
-	},
-	{
-		"id": "P024",
-		"name": "Cable Management Kit",
-		"price": 17.45,
-		"stock_quantity": 33,
-		"category": "Accessories"
-	},
-	{
-		"id": "P025",
-		"name": "Desk Mat XL",
-		"price": 21.9,
-		"stock_quantity": 28,
-		"category": "Office"
-	}
+    {
+        "id": "P001",
+        "name": "Wireless Mouse",
+        "price": 19.99,
+        "stock_quantity": 45,
+        "category": "Electronics"
+    },
+    {
+        "id": "P002",
+        "name": "Mechanical Keyboard",
+        "price": 69.5,
+        "stock_quantity": 22,
+        "category": "Electronics"
+    },
+    {
+        "id": "P003",
+        "name": "27in Monitor",
+        "price": 229.0,
+        "stock_quantity": 14,
+        "category": "Electronics"
+    },
+    {
+        "id": "P004",
+        "name": "USB-C Cable",
+        "price": 8.75,
+        "stock_quantity": 120,
+        "category": "Accessories"
+    },
+    {
+        "id": "P005",
+        "name": "Laptop Stand",
+        "price": 32.0,
+        "stock_quantity": 35,
+        "category": "Accessories"
+    },
+    {
+        "id": "P006",
+        "name": "Notebook A5",
+        "price": 4.5,
+        "stock_quantity": 200,
+        "category": "Stationery"
+    },
+    {
+        "id": "P007",
+        "name": "Gel Pen Set",
+        "price": 6.99,
+        "stock_quantity": 86,
+        "category": "Stationery"
+    },
+    {
+        "id": "P008",
+        "name": "Desk Organizer",
+        "price": 14.25,
+        "stock_quantity": 40,
+        "category": "Office"
+    },
+    {
+        "id": "P009",
+        "name": "Stapler Pro",
+        "price": 11.8,
+        "stock_quantity": 30,
+        "category": "Office"
+    },
+    {
+        "id": "P010",
+        "name": "Printer Paper 500",
+        "price": 7.2,
+        "stock_quantity": 157,
+        "category": "Office"
+    },
+    {
+        "id": "P011",
+        "name": "Water Bottle 1L",
+        "price": 12.5,
+        "stock_quantity": 55,
+        "category": "Lifestyle"
+    },
+    {
+        "id": "P012",
+        "name": "Coffee Mug",
+        "price": 9.99,
+        "stock_quantity": 70,
+        "category": "Lifestyle"
+    },
+    {
+        "id": "P013",
+        "name": "Backpack 20L",
+        "price": 39.95,
+        "stock_quantity": 26,
+        "category": "Bags"
+    },
+    {
+        "id": "P014",
+        "name": "Laptop Sleeve 15",
+        "price": 18.4,
+        "stock_quantity": 48,
+        "category": "Bags"
+    },
+    {
+        "id": "P015",
+        "name": "Smartphone Stand",
+        "price": 10.0,
+        "stock_quantity": 65,
+        "category": "Accessories"
+    },
+    {
+        "id": "P016",
+        "name": "HDMI Adapter",
+        "price": 15.3,
+        "stock_quantity": 38,
+        "category": "Electronics"
+    },
+    {
+        "id": "P017",
+        "name": "Portable SSD 1TB",
+        "price": 119.0,
+        "stock_quantity": 18,
+        "category": "Electronics"
+    },
+    {
+        "id": "P018",
+        "name": "Webcam 1080p",
+        "price": 54.75,
+        "stock_quantity": 24,
+        "category": "Electronics"
+    },
+    {
+        "id": "P019",
+        "name": "Desk Lamp LED",
+        "price": 26.6,
+        "stock_quantity": 29,
+        "category": "Office"
+    },
+    {
+        "id": "P020",
+        "name": "Noise Cancel Headset",
+        "price": 89.99,
+        "stock_quantity": 16,
+        "category": "Electronics"
+    },
+    {
+        "id": "P021",
+        "name": "Whiteboard Markers",
+        "price": 5.4,
+        "stock_quantity": 110,
+        "category": "Stationery"
+    },
+    {
+        "id": "P022",
+        "name": "Planner 2026",
+        "price": 13.2,
+        "stock_quantity": 50,
+        "category": "Stationery"
+    },
+    {
+        "id": "P023",
+        "name": "Sticky Notes Pack",
+        "price": 3.95,
+        "stock_quantity": 173,
+        "category": "Stationery"
+    },
+    {
+        "id": "P024",
+        "name": "Cable Management Kit",
+        "price": 17.45,
+        "stock_quantity": 33,
+        "category": "Accessories"
+    },
+    {
+        "id": "P025",
+        "name": "Desk Mat XL",
+        "price": 21.9,
+        "stock_quantity": 28,
+        "category": "Office"
+    }
 ]

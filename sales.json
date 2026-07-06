@@ -1,0 +1,47 @@
+[
+    {
+        "id": "S0001",
+        "customer_id": "C003",
+        "customer_name": "Liam Carter",
+        "items": [
+            {
+                "product_id": "P010",
+                "name": "Printer Paper 500",
+                "unit_price": 7.2,
+                "quantity": 3,
+                "subtotal": 21.6
+            }
+        ],
+        "subtotal": 21.6,
+        "discount_percent": 0,
+        "discount_amount": 0.0,
+        "total": 21.6,
+        "timestamp": "2026-07-06 09:04:20"
+    },
+    {
+        "id": "S0002",
+        "customer_id": "C009",
+        "customer_name": "Lucas Perry",
+        "items": [
+            {
+                "product_id": "P023",
+                "name": "Sticky Notes Pack",
+                "unit_price": 3.95,
+                "quantity": 7,
+                "subtotal": 27.65
+            },
+            {
+                "product_id": "P007",
+                "name": "Gel Pen Set",
+                "unit_price": 6.99,
+                "quantity": 4,
+                "subtotal": 27.96
+            }
+        ],
+        "subtotal": 55.61,
+        "discount_percent": 0,
+        "discount_amount": 0.0,
+        "total": 55.61,
+        "timestamp": "2026-07-06 09:04:47"
+    }
+]
