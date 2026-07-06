@@ -5,6 +5,16 @@ import os
 
 PRODUCTS_FILE = "products.json"
 
+
+def _product_index(products_list):
+    """Build a dictionary index keyed by product ID."""
+    return {product.get("id"): product for product in products_list}
+
+
+def _product_id_to_position(products_list):
+    """Build a dictionary mapping product ID to list position."""
+    return {product.get("id"): idx for idx, product in enumerate(products_list)}
+
 # ----------------------------
 # Helper Functions
 # ----------------------------
@@ -41,11 +51,11 @@ def generate_product_id(products):
 def add_product(product_id, name, price, stock_quantity, category=None):
     """Add a new product. Returns True on success, False if ID already exists."""
     products = load_products()
+    product_index = _product_index(products)
 
-    for product in products:
-        if product["id"] == product_id:
-            print(f"Error: Product with ID {product_id} already exists.")
-            return False
+    if product_id in product_index:
+        print(f"Error: Product with ID {product_id} already exists.")
+        return False
 
     new_product = {
         "id": product_id,
@@ -86,10 +96,7 @@ def view_all_products():
 def find_product(product_id):
     """Return a single product dict by ID, or None if not found."""
     products = load_products()
-    for product in products:
-        if product["id"] == product_id:
-            return product
-    return None
+    return _product_index(products).get(product_id)
 
 # ----------------------------
 # UPDATE
@@ -98,21 +105,23 @@ def find_product(product_id):
 def update_product(product_id, name=None, price=None, stock_quantity=None, category=None):
     """Update one or more fields of an existing product. Returns True/False."""
     products = load_products()
+    id_to_position = _product_id_to_position(products)
+    position = id_to_position.get(product_id)
 
-    for product in products:
-        if product["id"] == product_id:
-            if name is not None:
-                product["name"] = name
-            if price is not None:
-                product["price"] = float(price)
-            if stock_quantity is not None:
-                product["stock_quantity"] = int(stock_quantity)
-            if category is not None:
-                product["category"] = category
+    if position is not None:
+        product = products[position]
+        if name is not None:
+            product["name"] = name
+        if price is not None:
+            product["price"] = float(price)
+        if stock_quantity is not None:
+            product["stock_quantity"] = int(stock_quantity)
+        if category is not None:
+            product["category"] = category
 
-            save_products(products)
-            print(f"Product ID {product_id} updated successfully.")
-            return True
+        save_products(products)
+        print(f"Product ID {product_id} updated successfully.")
+        return True
 
     print(f"Error: Product with ID {product_id} not found.")
     return False
@@ -124,13 +133,15 @@ def update_product(product_id, name=None, price=None, stock_quantity=None, categ
 def delete_product(product_id):
     """Delete a product by ID. Returns True if deleted, False if not found."""
     products = load_products()
-    updated_products = [p for p in products if p["id"] != product_id]
+    id_to_position = _product_id_to_position(products)
+    position = id_to_position.get(product_id)
 
-    if len(updated_products) == len(products):
+    if position is None:
         print(f"Error: Product with ID {product_id} not found.")
         return False
 
-    save_products(updated_products)
+    products.pop(position)
+    save_products(products)
     print(f"Product ID {product_id} deleted successfully.")
     return True
 
@@ -140,10 +151,7 @@ def delete_product(product_id):
 
 def get_product_by_id(product_id):
     products = load_products()
-    for p in products:
-        if p["id"] == product_id:
-            return p
-    return None
+    return _product_index(products).get(product_id)
 
 
 def check_stock(product_id, quantity):

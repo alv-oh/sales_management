@@ -7,7 +7,7 @@ function currency(value) {
   const num = Number(value || 0);
   return new Intl.NumberFormat("en-US", {
     style: "currency",
-    currency: "USD",
+    currency: "KES",
   }).format(num);
 }
 
@@ -184,7 +184,6 @@ export default function App() {
     <div className="app-shell">
       <aside className="sidebar">
         <h1>Sales Command Center</h1>
-        <p>React UI connected to your existing Python modules.</p>
         <nav>
           {sections.map((name) => (
             <button

@@ -33,6 +33,16 @@ import os
 DATA_FILE = "customers.json"
 
 
+def _customer_index(customers_list):
+    """Build a dictionary index keyed by customer ID."""
+    return {customer.get("id"): customer for customer in customers_list}
+
+
+def _customer_id_to_position(customers_list):
+    """Build a dictionary mapping customer ID to list position."""
+    return {customer.get("id"): idx for idx, customer in enumerate(customers_list)}
+
+
 # ---------------------------------------------------------------------
 # File handling helpers (replace with Person 1's functions if available)
 # ---------------------------------------------------------------------
@@ -59,11 +69,11 @@ def save_customers(customers):
 def add_customer(customer_id, name, contact_info):
     """Add a new customer. Returns True on success, False if ID already exists."""
     customers = load_customers()
+    customer_index = _customer_index(customers)
 
-    for customer in customers:
-        if customer["id"] == customer_id:
-            print(f"Error: Customer with ID {customer_id} already exists.")
-            return False
+    if customer_id in customer_index:
+        print(f"Error: Customer with ID {customer_id} already exists.")
+        return False
 
     new_customer = {
         "id": customer_id,
@@ -98,10 +108,7 @@ def view_all_customers():
 def find_customer(customer_id):
     """Return a single customer dict by ID, or None if not found."""
     customers = load_customers()
-    for customer in customers:
-        if customer["id"] == customer_id:
-            return customer
-    return None
+    return _customer_index(customers).get(customer_id)
 
 
 # ---------------------------------------------------------------------
@@ -110,17 +117,19 @@ def find_customer(customer_id):
 def update_customer(customer_id, name=None, contact_info=None):
     """Update one or more fields of an existing customer. Returns True/False."""
     customers = load_customers()
+    id_to_position = _customer_id_to_position(customers)
+    position = id_to_position.get(customer_id)
 
-    for customer in customers:
-        if customer["id"] == customer_id:
-            if name is not None:
-                customer["name"] = name
-            if contact_info is not None:
-                customer["contact_info"] = contact_info
+    if position is not None:
+        customer = customers[position]
+        if name is not None:
+            customer["name"] = name
+        if contact_info is not None:
+            customer["contact_info"] = contact_info
 
-            save_customers(customers)
-            print(f"Customer ID {customer_id} updated successfully.")
-            return True
+        save_customers(customers)
+        print(f"Customer ID {customer_id} updated successfully.")
+        return True
 
     print(f"Error: Customer with ID {customer_id} not found.")
     return False
@@ -132,13 +141,15 @@ def update_customer(customer_id, name=None, contact_info=None):
 def delete_customer(customer_id):
     """Remove a customer by ID. Returns True if deleted, False if not found."""
     customers = load_customers()
-    updated_customers = [c for c in customers if c["id"] != customer_id]
+    id_to_position = _customer_id_to_position(customers)
+    position = id_to_position.get(customer_id)
 
-    if len(updated_customers) == len(customers):
+    if position is None:
         print(f"Error: Customer with ID {customer_id} not found.")
         return False
 
-    save_customers(updated_customers)
+    customers.pop(position)
+    save_customers(customers)
     print(f"Customer ID {customer_id} removed successfully.")
     return True
 
