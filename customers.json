@@ -3,5 +3,50 @@
         "id": "01",
         "name": "Paul",
         "contact_info": "N/A"
+    },
+    {
+        "id": "C002",
+        "name": "Ava Thompson",
+        "contact_info": "ava.thompson@example.com"
+    },
+    {
+        "id": "C003",
+        "name": "Liam Carter",
+        "contact_info": "liam.carter@example.com"
+    },
+    {
+        "id": "C004",
+        "name": "Sophia Reed",
+        "contact_info": "sophia.reed@example.com"
+    },
+    {
+        "id": "C005",
+        "name": "Noah Bennett",
+        "contact_info": "noah.bennett@example.com"
+    },
+    {
+        "id": "C006",
+        "name": "Mia Foster",
+        "contact_info": "mia.foster@example.com"
+    },
+    {
+        "id": "C007",
+        "name": "Ethan Brooks",
+        "contact_info": "ethan.brooks@example.com"
+    },
+    {
+        "id": "C008",
+        "name": "Isabella Hayes",
+        "contact_info": "isabella.hayes@example.com"
+    },
+    {
+        "id": "C009",
+        "name": "Lucas Perry",
+        "contact_info": "lucas.perry@example.com"
+    },
+    {
+        "id": "C010",
+        "name": "Charlotte Ward",
+        "contact_info": "charlotte.ward@example.com"
     }
 ]
