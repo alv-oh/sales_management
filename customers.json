@@ -1,10 +1,5 @@
 [
     {
-        "id": "01",
-        "name": "Paul",
-        "contact_info": "N/A"
-    },
-    {
         "id": "C002",
         "name": "Ava Thompson",
         "contact_info": "ava.thompson@example.com"
