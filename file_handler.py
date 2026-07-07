@@ -1,3 +1,5 @@
+"""CSV persistence helpers for products, customers, and transactions."""
+
 import csv
 import os
 
@@ -17,6 +19,7 @@ TRANSACTION_FIELDS = ["id", "customer_id", "product_id", "quantity", "total", "d
 
 def _ensure_data_folder():
     """Creates the data/ folder if it doesn't exist."""
+    # Centralized folder creation keeps save functions simple and consistent.
     os.makedirs(DATA_FOLDER, exist_ok=True)
 
 

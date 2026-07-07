@@ -21,6 +21,7 @@ import json
 import os
 from datetime import datetime
 
+# Project modules for inventory operations and customer lookup.
 import products                 
 from customers import find_customer       # Person 1's module (customers)
 
@@ -48,6 +49,7 @@ def save_sales(sales):
 
 
 def generate_sale_id(sales):
+    """Generate a simple sequential receipt ID."""
     return f"S{len(sales) + 1:04d}"
 
 

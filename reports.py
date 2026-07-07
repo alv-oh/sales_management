@@ -9,6 +9,7 @@ import products
 import transactions
 
 
+# High-level KPI summary over the full sales dataset.
 def sales_summary_report():
     """Print summary stats from all recorded sales."""
     sales = transactions.load_sales()
@@ -121,6 +122,7 @@ def export_sales_csv(output_path="data/sales_report.csv"):
     if directory:
         os.makedirs(directory, exist_ok=True)
 
+    # Flatten nested sale items so each row is import-friendly for spreadsheet tools.
     with open(output_path, "w", newline="", encoding="utf-8") as csvfile:
         fieldnames = [
             "sale_id",
@@ -160,6 +162,7 @@ def export_sales_csv(output_path="data/sales_report.csv"):
 
 def reports_menu():
     """Simple menu to run all report functions."""
+    # Interactive entry point for report generation from the CLI app.
     while True:
         print("\n--- Reports Menu ---")
         print("1. Sales Summary")

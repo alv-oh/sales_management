@@ -52,7 +52,7 @@
         "id": "P008",
         "name": "Desk Organizer",
         "price": 14.25,
-        "stock_quantity": 40,
+        "stock_quantity": 37,
         "category": "Office"
     },
     {
@@ -94,7 +94,7 @@
         "id": "P014",
         "name": "Laptop Sleeve 15",
         "price": 18.4,
-        "stock_quantity": 48,
+        "stock_quantity": 46,
         "category": "Bags"
     },
     {
@@ -173,5 +173,12 @@
         "price": 21.9,
         "stock_quantity": 28,
         "category": "Office"
+    },
+    {
+        "id": "P026",
+        "name": "Pencil",
+        "price": 2.0,
+        "stock_quantity": 322,
+        "category": "Stationery"
     }
 ]

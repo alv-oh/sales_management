@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { api } from "./api";
 
+// Main navigation tabs shown in the sidebar.
 const sections = ["Dashboard", "Products", "Customers", "Sales"];
 
 function currency(value) {
@@ -16,6 +17,7 @@ function EmptyState({ label }) {
 }
 
 export default function App() {
+  // Shared UI state.
   const [active, setActive] = useState("Dashboard");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -25,6 +27,7 @@ export default function App() {
   const [customers, setCustomers] = useState([]);
   const [sales, setSales] = useState([]);
 
+  // Form models for create actions.
   const [productForm, setProductForm] = useState({
     id: "",
     name: "",
@@ -45,6 +48,7 @@ export default function App() {
   });
 
   async function refreshAll() {
+    // Fetch all dashboard resources in parallel for a responsive UI refresh.
     setLoading(true);
     setError("");
     try {
@@ -71,6 +75,7 @@ export default function App() {
   }, []);
 
   const productById = useMemo(() => {
+    // Fast lookup used to show line-item hints in the sales form.
     const map = new Map();
     products.forEach((p) => map.set(p.id, p));
     return map;
@@ -127,6 +132,7 @@ export default function App() {
   }
 
   function updateSaleItem(index, key, value) {
+    // Immutable line-item update by row index.
     setSaleForm((prev) => {
       const items = [...prev.items];
       items[index] = { ...items[index], [key]: value };
@@ -155,6 +161,7 @@ export default function App() {
     event.preventDefault();
     setError("");
 
+    // Remove empty rows and normalize quantity values before submit.
     const cleanedItems = saleForm.items
       .filter((item) => item.product_id)
       .map((item) => ({

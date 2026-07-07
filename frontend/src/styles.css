@@ -1,3 +1,4 @@
+/* Design tokens for colors, spacing tone, and elevation. */
 :root {
   --bg: #f4efe6;
   --ink: #1f2a1d;
@@ -19,6 +20,7 @@ body {
   font-family: "Space Grotesk", sans-serif;
   color: var(--ink);
   min-height: 100vh;
+  /* Layered gradients add depth while keeping contrast readable. */
   background:
     radial-gradient(circle at 10% 20%, rgba(242, 166, 90, 0.25), transparent 35%),
     radial-gradient(circle at 80% 10%, rgba(20, 99, 86, 0.25), transparent 35%),
@@ -275,6 +277,7 @@ th {
 }
 
 @media (max-width: 1080px) {
+  /* Collapse to single-column shell and simplify dense grids on tablets. */
   .app-shell {
     grid-template-columns: 1fr;
   }

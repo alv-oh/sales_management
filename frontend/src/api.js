@@ -1,6 +1,7 @@
 const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8000";
 
 async function request(path, options = {}) {
+  // Centralized fetch wrapper for error handling and JSON parsing.
   const response = await fetch(`${API_BASE}${path}`, {
     headers: {
       "Content-Type": "application/json",
@@ -28,8 +29,10 @@ async function request(path, options = {}) {
 }
 
 export const api = {
+  // Dashboard
   getDashboard: () => request("/api/dashboard"),
 
+  // Products
   getProducts: () => request("/api/products"),
   createProduct: (payload) =>
     request("/api/products", {
@@ -46,6 +49,7 @@ export const api = {
       method: "DELETE",
     }),
 
+  // Customers
   getCustomers: () => request("/api/customers"),
   createCustomer: (payload) =>
     request("/api/customers", {
@@ -62,6 +66,7 @@ export const api = {
       method: "DELETE",
     }),
 
+  // Sales
   getSales: () => request("/api/sales"),
   createSale: (payload) =>
     request("/api/sales", {

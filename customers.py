@@ -30,6 +30,7 @@ easily later.
 import json
 import os
 
+# Default JSON store used by this standalone module.
 DATA_FILE = "customers.json"
 
 
@@ -158,6 +159,7 @@ def delete_customer(customer_id):
 # Simple menu for testing this module on its own
 # ---------------------------------------------------------------------
 def main():
+    # Lightweight CLI loop for manual testing and local operations.
     while True:
         print("\n--- Customer Management Menu ---")
         print("1. Add Customer")

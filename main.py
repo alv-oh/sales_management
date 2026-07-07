@@ -7,6 +7,7 @@ import transactions
 
 
 def products_menu():
+    # Delegate product CRUD operations to the products module.
     while True:
         print("\n--- Products Menu ---")
         print("1. Add Product")
@@ -68,6 +69,7 @@ def products_menu():
 
 
 def customers_menu():
+    # Delegate customer CRUD operations to the customers module.
     while True:
         print("\n--- Customers Menu ---")
         print("1. Add Customer")
@@ -105,6 +107,7 @@ def customers_menu():
 
 
 def main_menu():
+    # Top-level router for all application workflows.
     while True:
         print("\n========== Sales Management System ==========")
         print("1. Manage Products")

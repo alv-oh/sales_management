@@ -60,6 +60,7 @@ def sort_dicts_by_key(items, key, reverse=False):
 
 def sort_products(products, by="name", reverse=False):
     """Sort products by name, price, or stock_quantity and return a new list."""
+    # Keep sort options explicit to avoid silently sorting by unsupported fields.
     valid_keys = {"name", "price", "stock_quantity"}
     if by not in valid_keys:
         valid_keys_ordered = ["name", "price", "stock_quantity"]
@@ -105,6 +106,7 @@ def top_selling_products(sales, top_n=5):
 
             product_totals[pid]["quantity"] += qty
 
+    # Rank aggregated quantities in descending order.
     ranked = merge_sort(
         product_totals.items(),
         key_func=lambda kv: kv[1]["quantity"],

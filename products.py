@@ -1,5 +1,7 @@
 # products.py
 
+"""Product catalog and inventory management operations."""
+
 import json
 import os
 
@@ -42,6 +44,7 @@ def save_products(products):
 
 
 def generate_product_id(products):
+    """Generate a simple sequential product ID based on current list size."""
     return f"P{len(products) + 1:03d}"
 
 # ----------------------------
@@ -150,11 +153,13 @@ def delete_product(product_id):
 # ----------------------------
 
 def get_product_by_id(product_id):
+    """Return product by ID or None when it does not exist."""
     products = load_products()
     return _product_index(products).get(product_id)
 
 
 def check_stock(product_id, quantity):
+    """Check whether a product has at least the requested quantity."""
     product = get_product_by_id(product_id)
     if product:
         return product["stock_quantity"] >= quantity
@@ -162,6 +167,7 @@ def check_stock(product_id, quantity):
 
 
 def reduce_stock(product_id, quantity):
+    """Reduce stock for a product after a confirmed sale."""
     products = load_products()
     for p in products:
         if p["id"] == product_id:
@@ -174,5 +180,6 @@ def reduce_stock(product_id, quantity):
 
 
 def get_low_stock_products(threshold=5):
+    """Return products with stock at or below the configured threshold."""
     products = load_products()
     return [p for p in products if p["stock_quantity"] <= threshold]

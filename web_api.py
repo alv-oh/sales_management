@@ -18,6 +18,7 @@ import transactions
 
 app = FastAPI(title="Sales Management API", version="1.0.0")
 
+# Allow local frontend dev servers to call this API.
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
@@ -67,6 +68,7 @@ class SaleCreate(BaseModel):
     discount_percent: Optional[float] = Field(default=None, ge=0, le=100)
 
 
+# Dashboard endpoint data composer used by the UI landing page.
 def build_dashboard():
     sales = transactions.load_sales()
     all_products = products.load_products()
@@ -103,6 +105,7 @@ def dashboard():
 
 @app.get("/api/products")
 def list_products():
+    # Read-only passthrough to existing storage helpers.
     return products.load_products()
 
 
@@ -188,6 +191,7 @@ def list_sales():
 
 @app.post("/api/sales", status_code=201)
 def create_sale(payload: SaleCreate):
+    # Build a transient cart, then reuse existing checkout logic.
     cart = []
     for item in payload.items:
         ok = transactions.add_to_cart(cart, item.product_id, item.quantity)
